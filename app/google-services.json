@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "942878019014",
+    "firebase_url": "https://feedhigh-93b89.firebaseio.com",
+    "project_id": "feedhigh-93b89",
+    "storage_bucket": "feedhigh-93b89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942878019014:android:d69f19650d496d1b",
+        "android_client_info": {
+          "package_name": "com.softup.utkarsh.feedhigh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942878019014-vpluvo1rdpa73q27vjdhf2arbs5vrm5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softup.utkarsh.feedhigh",
+            "certificate_hash": "42b3f0fd262814471bb696cc78eff0b7dbeda006"
+          }
+        },
+        {
+          "client_id": "942878019014-vcf24pq822jnu0nul0olkab66bpike4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJCza3HTfO2-TkYIO-ATxyW_LxCg5xNCU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942878019014-vcf24pq822jnu0nul0olkab66bpike4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
