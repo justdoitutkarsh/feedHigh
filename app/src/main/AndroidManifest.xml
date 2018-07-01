@@ -24,6 +24,10 @@
         <activity android:name=".SignUp" />
         <activity android:name=".PhoneNoAuth"></activity>
         <activity android:name=".SuccessActivity" />
+        <activity android:name=".DepartmentWiseFeed">
+
+        </activity>
+        <activity android:name=".ActivityOne"></activity>
     </application>
 
 </manifest>
