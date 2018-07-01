@@ -1,6 +1,7 @@
 package com.softup.utkarsh.feedhigh;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Model.EmpMaster;
+import com.softup.utkarsh.feedhigh.Model.User;
 
 public class SignIn extends AppCompatActivity {
 EditText edtEmpId,edtPassword;
@@ -50,7 +53,13 @@ Button btnSignIn;
                             mDialog.dismiss();
                              EmpMaster empMaster = dataSnapshot.child(edtEmpId.getText().toString()).getValue(EmpMaster.class);
                             if (empMaster.getPassword().equals(edtPassword.getText().toString())) {
-                                Toast.makeText(SignIn.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
+                             //   Toast.makeText(SignIn.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
+
+                                Intent homeintent=new Intent(SignIn.this,Home.class);
+                                Common.currentUser = empMaster;
+                                startActivity(homeintent);
+                                finish();
+
                             } else {
                                 Toast.makeText(SignIn.this, "Invalid Credential !", Toast.LENGTH_SHORT).show();
                             }

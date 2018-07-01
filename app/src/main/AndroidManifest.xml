@@ -22,12 +22,14 @@
         </activity>
         <activity android:name=".SignIn" />
         <activity android:name=".SignUp" />
-        <activity android:name=".PhoneNoAuth"></activity>
-        <activity android:name=".SuccessActivity" />
-        <activity android:name=".DepartmentWiseFeed">
-
-        </activity>
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme"></activity>
         <activity android:name=".ActivityOne"></activity>
+        <activity android:name=".DepartmentWiseFeed"></activity>
+        <activity android:name=".PhoneNoAuth"></activity>
+        <activity android:name=".SuccessActivity"></activity>
     </application>
 
 </manifest>

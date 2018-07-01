@@ -1,6 +1,6 @@
 package com.softup.utkarsh.feedhigh.Model;
 
-public class EmpMaster {
+public class EmpMaster extends User {
     private String Department;
     private String Email;
     private String Mobile;
