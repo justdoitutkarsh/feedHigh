@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">feedHigh</string>
     <string name="slogan">Ab no more Chalta Hai !</string>
+    <string name="auth_successfull">Authentication Successful</string>
 </resources>

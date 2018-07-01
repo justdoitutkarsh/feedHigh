@@ -1,6 +1,7 @@
 package com.softup.utkarsh.feedhigh;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,7 +58,14 @@ public class SignUp extends AppCompatActivity {
                             EmpMaster empMaster = new EmpMaster(edtDepartment.getText().toString(),edtEmail.getText().toString(),
                                     edtPhone.getText().toString(),edtName.getText().toString(),edtPassword.getText().toString());
                             table_user.child(edtEmpId.getText().toString()).setValue(empMaster);
+
                             Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("phoneParams", edtPhone.getText().toString());
+
+                            Intent intent = new Intent(SignUp.this,PhoneNoAuth.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                             finish();
                         }
                     }

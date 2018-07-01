@@ -39,5 +39,6 @@ dependencies {
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.android.support:multidex:1.0.3'
     implementation('com.github.jd-alexander:android-flat-button:v1.1')
+    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
 }
 apply plugin: 'com.google.gms.google-services'
