@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".Feedback">
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="1.What do you like most about working here? "
+        android:textSize="20dp"
+        android:textColor="#e53935"/>
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Write your review....."
+        android:textColorHint="#eceff1" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="2.Do you feel connected to your coworkers? "
+        android:textSize="20dp"
+        android:textColor="#e53935"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Write your review....."
+        android:textColor="@color/colorPrimary"
+        />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="3.Have you accomplished your goals in the last six months?"
+        android:textSize="20dp"
+        android:textColor="#e53935"/>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Write your review....."
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="4.Do you feel like you're progressing professionally at this organization?"
+        android:textSize="20dp"
+        android:textColor="#e53935"/>
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Write your review....."
+        android:textColor="@color/colorPrimary"/>
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="5.What motivates you to go above and beyond at work?"
+        android:textSize="20dp"
+        android:textColor="#e53935"/>
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Write your review....."
+        android:textColor="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6d4c41"
+        android:text="Submit"
+        android:textColor="#ccff90"
+        android:textSize="25dp" />
+
+
+</LinearLayout>

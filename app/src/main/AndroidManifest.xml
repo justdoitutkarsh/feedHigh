@@ -30,6 +30,8 @@
         <activity android:name=".DepartmentWiseFeed"></activity>
         <activity android:name=".PhoneNoAuth"></activity>
         <activity android:name=".SuccessActivity"></activity>
+        <activity android:name=".Feedback"></activity>
+        <activity android:name=".OthersForm"></activity>
     </application>
 
 </manifest>

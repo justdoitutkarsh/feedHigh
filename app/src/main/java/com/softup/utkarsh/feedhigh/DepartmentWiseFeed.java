@@ -57,10 +57,11 @@ public class DepartmentWiseFeed extends AppCompatActivity {
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    Intent intent = new Intent(DepartmentWiseFeed.this,ActivityOne.class);
-                    intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
+                    if (finalI==0) {
+                        Intent intent = new Intent(DepartmentWiseFeed.this, Feedback.class);
+                      //  intent.putExtra("info", "This is activity from card item index  " + finalI);
+                        startActivity(intent);
+                    }
 
                 }
             });
