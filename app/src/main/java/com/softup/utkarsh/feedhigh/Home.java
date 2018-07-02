@@ -154,6 +154,11 @@ public class Home extends AppCompatActivity
                             startActivity(intent);
 
                         }
+                        else if (clickitem.getName().toString().equals("Start Discussion"))
+                        {
+                            Intent intent = new Intent(Home.this, GroupDiscussion.class);
+                            startActivity(intent);
+                        }
 
                     }
                 });

@@ -32,6 +32,9 @@
         <activity android:name=".SuccessActivity"></activity>
         <activity android:name=".Feedback"></activity>
         <activity android:name=".OthersForm"></activity>
+        <activity android:name=".GroupDiscussion">
+
+        </activity>
     </application>
 
 </manifest>
