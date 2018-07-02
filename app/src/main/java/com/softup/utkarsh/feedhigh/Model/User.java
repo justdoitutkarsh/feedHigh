@@ -1,7 +1,7 @@
 package com.softup.utkarsh.feedhigh.Model;
 
 public class User {
-    private String email,password,name,phone,empId,Designation;
+    private String email,password,name,phone,empId,Designation,Department;
 
     public User() {
     }

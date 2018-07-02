@@ -17,7 +17,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.softup.utkarsh.feedhigh.Model.EmpMaster;
 
 public class SignUp extends AppCompatActivity {
-    MaterialEditText edtEmpId,edtName,edtEmail,edtDepartment,edtPassword,edtPhone;
+    MaterialEditText edtEmpId,edtName,edtEmail,edtDepartment,edtPassword,edtPhone,edtDesignation;
     Button btnSignUp;
 
     @Override
@@ -31,6 +31,7 @@ public class SignUp extends AppCompatActivity {
         edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
         edtPhone = (MaterialEditText)findViewById(R.id.edtPhone);
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
+        edtDesignation = (MaterialEditText)findViewById(R.id.edtDesignation);
 
         //Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -56,7 +57,7 @@ public class SignUp extends AppCompatActivity {
                         {
                             mDialog.dismiss();
                             EmpMaster empMaster = new EmpMaster(edtDepartment.getText().toString(),edtEmail.getText().toString(),
-                                    edtPhone.getText().toString(),edtName.getText().toString(),edtPassword.getText().toString());
+                                    edtPhone.getText().toString(),edtName.getText().toString(),edtPassword.getText().toString(),edtDesignation.getText().toString());
                             table_user.child(edtEmpId.getText().toString()).setValue(empMaster);
 
                           //  Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();

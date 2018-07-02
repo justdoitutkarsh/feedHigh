@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,12 +19,9 @@ import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Model.EmpMaster;
 import com.softup.utkarsh.feedhigh.Model.User;
 
-import io.paperdb.Paper;
-
 public class SignIn extends AppCompatActivity {
 EditText edtEmpId,edtPassword;
 Button btnSignIn;
-com.rey.material.widget.CheckBox ckbRemember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +31,6 @@ com.rey.material.widget.CheckBox ckbRemember;
         edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
         edtEmpId = (MaterialEditText)findViewById(R.id.edtEmpId);
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
-        ckbRemember=(com.rey.material.widget.CheckBox)findViewById(R.id.ckbRemember);
-
-        Paper.init(this);
 
         //Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -62,20 +55,16 @@ com.rey.material.widget.CheckBox ckbRemember;
                             if (empMaster.getPassword().equals(edtPassword.getText().toString())) {
                              //   Toast.makeText(SignIn.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
 
-                                //Save UserID and Password
-                                if(ckbRemember.isChecked()) {
-                                Paper.book().write(Common.USER_KEY,edtEmpId.getText().toString());
-                                Paper.book().write(Common.PWD_KEY,edtPassword.getText().toString());
-                                }
+
+
 
                                 Intent homeintent=new Intent(SignIn.this,Home.class);
+                                homeintent.putExtra("EXTRA_SESSION_ID", edtEmpId.getText().toString());
                                 Common.currentUser = empMaster;
                                 startActivity(homeintent);
                                 finish();
 
-                            }
-
-                            else {
+                            } else {
                                 Toast.makeText(SignIn.this, "Invalid Credential !", Toast.LENGTH_SHORT).show();
                             }
                         }
