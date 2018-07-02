@@ -46,5 +46,7 @@ dependencies {
     implementation('com.github.jd-alexander:android-flat-button:v1.1')
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     implementation 'com.github.sujithkanna:smileyrating:1.6.8'
+    implementation 'com.github.rey5137:material:1.2.4'
+    implementation 'io.paperdb:paperdb:2.1'
 }
 apply plugin: 'com.google.gms.google-services'

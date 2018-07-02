@@ -31,6 +31,8 @@
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true"
             />
+
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPassword"
             android:hint="Password"
@@ -46,6 +48,18 @@
             app:met_maxCharacters="11"
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true"
+            />
+
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/ckbRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Remember me"
+            android:textColor="@android:color/white"
+            app:cbd_strokeColor="@android:color/white"
+            app:cbd_tickColor="@color/colorPrimaryDark"
             />
 
     </LinearLayout>

@@ -29,12 +29,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
+import io.paperdb.Paper;
+
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseDatabase database;
     DatabaseReference review;
     TextView textFullname;
+
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -49,6 +52,7 @@ public class Home extends AppCompatActivity
 
         database=FirebaseDatabase.getInstance();
         review=database.getReference("Department");
+        Paper.init(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +165,14 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_signout) {
+
+
+            Paper.book().destroy();
+
+            Intent signin = new Intent(Home.this,Login.class);
+            signin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signin);
+            finish();
 
         }
 
