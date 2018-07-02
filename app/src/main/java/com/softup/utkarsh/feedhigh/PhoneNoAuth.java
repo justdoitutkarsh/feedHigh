@@ -30,9 +30,9 @@ import java.util.Arrays;
  */
 
 public class PhoneNoAuth extends AppCompatActivity {
-    private static String xemail;
+
     private static final int RC_SIGN_IN = 123;
-    String phone;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,7 +81,9 @@ public class PhoneNoAuth extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
 
             // already signed in
-            startActivity(new Intent(PhoneNoAuth.this, SuccessActivity.class));
+            Toast.makeText(this, "OTP already verified..!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(PhoneNoAuth.this, Login.class));
+
             finish();
 
         }
@@ -134,7 +136,8 @@ public class PhoneNoAuth extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-                startActivity(new Intent(PhoneNoAuth.this,SuccessActivity.class));
+                Toast.makeText(this, "Verified , Please log in", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(PhoneNoAuth.this,Login.class));
                 finish();
                 return;
             }

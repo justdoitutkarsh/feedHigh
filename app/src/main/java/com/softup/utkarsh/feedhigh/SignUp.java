@@ -59,7 +59,7 @@ public class SignUp extends AppCompatActivity {
                                     edtPhone.getText().toString(),edtName.getText().toString(),edtPassword.getText().toString());
                             table_user.child(edtEmpId.getText().toString()).setValue(empMaster);
 
-                            Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();
                             Bundle bundle = new Bundle();
                             bundle.putString("phoneParams", edtPhone.getText().toString());
 
