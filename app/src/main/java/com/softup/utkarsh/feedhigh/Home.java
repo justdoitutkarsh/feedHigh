@@ -41,6 +41,7 @@ import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Interface.ItemClickListener;
 import com.softup.utkarsh.feedhigh.Model.Department;
 import com.softup.utkarsh.feedhigh.ViewHolder.MenuViewHolder;
+import com.softup.utkarsh.feedhigh.activity.DepartmentReview;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -150,7 +151,7 @@ public class Home extends AppCompatActivity
                     public void onClick(View view, int position, boolean isLongClick) {
                         Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
                         if(clickitem.getName().toString().equals("Department Review")) {
-                            Intent intent = new Intent(Home.this, DepartmentWiseFeed.class);
+                            Intent intent = new Intent(Home.this, DepartmentReview.class);
                             startActivity(intent);
 
                         }
@@ -159,6 +160,7 @@ public class Home extends AppCompatActivity
                             Intent intent = new Intent(Home.this, GroupDiscussion.class);
                             startActivity(intent);
                         }
+
 
                     }
                 });

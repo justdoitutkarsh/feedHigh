@@ -9,4 +9,15 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_add_note">AddNoteActivity</string>
+    <string name="title_activity_login">Notes on cloud</string>
+    <string name="title_activity_select_user">SelectUserActivity</string>
+
+    <string name="priority_string">Rating</string>
+    <string name="priority_1">Excellent</string>
+    <string name="priority_2">Good</string>
+    <string name="priority_3">Poor</string>
+    <string name="high_priority">Excellent</string>
+    <string name="med_priority">Good</string>
+    <string name="low_priority">Poor</string>
 </resources>
