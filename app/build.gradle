@@ -48,6 +48,10 @@ dependencies {
     implementation 'com.github.sujithkanna:smileyrating:1.6.8'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.github.d-max:spots-dialog:0.7@aar'
-    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'io.paperdb:paperdb:2.1'
+    implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
+    implementation 'com.github.rey5137:material:1.2.4'
+    implementation 'github.hellocsl:CursorWheelLayout:1.1.0'
+
 }
 apply plugin: 'com.google.gms.google-services'

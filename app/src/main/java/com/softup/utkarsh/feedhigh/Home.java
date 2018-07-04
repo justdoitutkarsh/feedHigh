@@ -41,7 +41,6 @@ import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Interface.ItemClickListener;
 import com.softup.utkarsh.feedhigh.Model.Department;
 import com.softup.utkarsh.feedhigh.ViewHolder.MenuViewHolder;
-import com.softup.utkarsh.feedhigh.activity.DepartmentReview;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -51,6 +50,7 @@ import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
+import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,6 +78,8 @@ public class Home extends AppCompatActivity
         //Init Firebase Storage
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
+
+        Paper.init(this);
 
 
         database=FirebaseDatabase.getInstance();
@@ -151,8 +153,9 @@ public class Home extends AppCompatActivity
                     public void onClick(View view, int position, boolean isLongClick) {
                         Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
                         if(clickitem.getName().toString().equals("Department Review")) {
-                            Intent intent = new Intent(Home.this, DepartmentReview.class);
+                            Intent intent = new Intent(Home.this, Feedback.class);
                             startActivity(intent);
+                            finish();
 
                         }
                         else if (clickitem.getName().toString().equals("Start Discussion"))
@@ -160,7 +163,6 @@ public class Home extends AppCompatActivity
                             Intent intent = new Intent(Home.this, GroupDiscussion.class);
                             startActivity(intent);
                         }
-
 
                     }
                 });
@@ -220,6 +222,12 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_signout) {
+
+            Paper.book().destroy();
+            Intent sign_out=new Intent(Home.this,SignIn.class);
+            sign_out.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK );
+            startActivity(sign_out);
+
 
         }
         else if (id == R.id.nav_update_info) {
