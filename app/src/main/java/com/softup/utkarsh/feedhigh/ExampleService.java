@@ -41,7 +41,9 @@ public class ExampleService extends Service {
                 .setContentIntent(pendingIntent)
                 .setSound(soundUri)
                 .setOngoing(false)
+                .setAutoCancel(true)
                 .build();
+
 
         startForeground(1, notification);
 
