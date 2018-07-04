@@ -73,6 +73,11 @@
         <activity android:name=".GroupDiscussion">
 
         </activity>
+        <activity android:name=".Notification">
+
+        </activity>
+        <service android:name=".ExampleService" />
+
     </application>
 
 </manifest>

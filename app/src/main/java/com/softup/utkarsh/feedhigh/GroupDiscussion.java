@@ -1,8 +1,11 @@
 package com.softup.utkarsh.feedhigh;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -45,10 +49,12 @@ public class GroupDiscussion extends AppCompatActivity {
   private MainAdapter adapter;
   private DatabaseReference databaseRef;
   private ImageButton imageButton_send;
+
   private EditText editText_message;
   ArrayList<Message> messageArrayList = new ArrayList<>();
   private ProgressBar progressBar;
   private long last_message_timestamp = 0;
+  static int clickcount=0;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,8 @@ public class GroupDiscussion extends AppCompatActivity {
     mContext = GroupDiscussion.this;
     main_recycler_view = (RecyclerView) findViewById(R.id.main_recycler_view);
     imageButton_send = (ImageButton) findViewById(R.id.imageButton_send);
+
+
     editText_message = (EditText) findViewById(R.id.editText_message);
     progressBar = (ProgressBar) findViewById(R.id.progressBar);
     database = FirebaseDatabase.getInstance();
@@ -70,38 +78,77 @@ public class GroupDiscussion extends AppCompatActivity {
     adapter = new MainAdapter(mContext, messageArrayList);
     main_recycler_view.setAdapter(adapter);
 
-    databaseRef.child("the_messages").limitToLast(50).addChildEventListener(new ChildEventListener() {
+    final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.sub);
+    fab.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-        progressBar.setVisibility(View.GONE);
-        Message new_message = dataSnapshot.getValue(Message.class);
-        messageArrayList.add(new_message);
-        adapter.notifyDataSetChanged();
-        main_recycler_view.scrollToPosition(adapter.getItemCount() - 1);
+      public void onClick(View view) {
+
+        clickcount=clickcount+1;
+
+
+        if (clickcount%2==0)
+        {
+          Snackbar.make(view, "Unsubscribed !", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        }
+        else
+        {
+          Snackbar.make(view, "Subscribed !", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+        }
+
+        //  onNotification();
+
+
+
+        // onNotificationoff();
+        //  Snackbar.make(view, "Unsubscribed !", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
       }
 
-      @Override
-      public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-      }
-
-      @Override
-      public void onChildRemoved(DataSnapshot dataSnapshot) {
-        Log.d("REMOVED", dataSnapshot.getValue(Message.class).toString());
-        messageArrayList.remove(dataSnapshot.getValue(Message.class));
-        adapter.notifyDataSetChanged();
-      }
-
-      @Override
-      public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-      }
-
-      @Override
-      public void onCancelled(DatabaseError databaseError) {
-
-      }
     });
+
+
+        databaseRef.child("the_messages").limitToLast(50).addChildEventListener(new ChildEventListener() {
+          @Override
+          public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            progressBar.setVisibility(View.GONE);
+            final Message new_message = dataSnapshot.getValue(Message.class);
+            if (clickcount%2==1) {
+
+              String input = new_message.getMessage().toString();
+              Intent serviceIntent = new Intent(GroupDiscussion.this, ExampleService.class);
+              serviceIntent.putExtra("inputExtra", input);
+              ContextCompat.startForegroundService(GroupDiscussion.this, serviceIntent);
+            }
+            messageArrayList.add(new_message);
+            adapter.notifyDataSetChanged();
+            main_recycler_view.scrollToPosition(adapter.getItemCount() - 1);
+          }
+
+
+          @Override
+          public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+          }
+
+          @Override
+          public void onChildRemoved(DataSnapshot dataSnapshot) {
+            Log.d("REMOVED", dataSnapshot.getValue(Message.class).toString());
+            messageArrayList.remove(dataSnapshot.getValue(Message.class));
+            adapter.notifyDataSetChanged();
+          }
+
+          @Override
+          public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+          }
+
+          @Override
+          public void onCancelled(DatabaseError databaseError) {
+
+          }
+        });
+
 
     imageButton_send.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -121,6 +168,11 @@ public class GroupDiscussion extends AppCompatActivity {
 
     logic_for_username();
   }
+
+
+
+
+
 
   private void process_new_message(String new_message, boolean isNotification) {
     if (new_message.isEmpty()) {
