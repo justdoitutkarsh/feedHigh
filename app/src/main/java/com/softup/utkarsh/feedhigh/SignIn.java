@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,17 +15,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
-import com.rey.material.widget.CheckBox;
 import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Model.EmpMaster;
 import com.softup.utkarsh.feedhigh.Model.User;
 
-import io.paperdb.Paper;
-
 public class SignIn extends AppCompatActivity {
 EditText edtEmpId,edtPassword;
 Button btnSignIn;
-CheckBox ckbRembember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +31,6 @@ CheckBox ckbRembember;
         edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
         edtEmpId = (MaterialEditText)findViewById(R.id.edtEmpId);
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
-        ckbRembember=(CheckBox) findViewById(R.id.ckbRemember);
-
-        Paper.init(this);
 
         //Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -47,12 +39,6 @@ CheckBox ckbRembember;
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(ckbRembember.isChecked())
-                {
-                    Paper.book().write(Common.USER_KEY,edtEmpId.getText().toString());
-                    Paper.book().write(Common.PWD_KEY,edtPassword.getText().toString());
-                }
                 final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Please waiting...");
                 mDialog.show();

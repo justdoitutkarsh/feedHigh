@@ -11,29 +11,73 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.AddNoteActivity"
+            android:label="@string/title_activity_add_note"
+            android:parentActivityName=".activity.DepartmentReview"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.softup.utkarsh.feedhigh.activity.DepartmentReview" />
+        </activity>
+        <activity
+            android:name=".activity.DepartmentReview"
+            android:label="@string/title_activity_add_note"
+            android:parentActivityName=".activity.DepartmentReview"
+            android:theme="@style/AppTheme.ActionBar">
+
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".activity.DepartmentReview">
+
+        </activity>
+        <service android:name=".service.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.FirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.MessageSenderService"
+            android:exported="false" />
+
+        <activity android:name=".activity.DetailsActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Welcome" />
         <activity android:name=".Login">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".SignIn" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".ActivityOne" />
-        <activity android:name=".DepartmentWiseFeed" />
-        <activity android:name=".PhoneNoAuth" />
-        <activity android:name=".SuccessActivity" />
-        <activity android:name=".Feedback" />
-        <activity android:name=".OthersForm" />
-        <activity android:name=".GroupDiscussion" />
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".ActivityOne"></activity>
+        <activity android:name=".DepartmentWiseFeed"></activity>
+        <activity android:name=".PhoneNoAuth"></activity>
+        <activity android:name=".SuccessActivity"></activity>
+        <activity android:name=".Feedback"></activity>
+        <activity android:name=".OthersForm"></activity>
+        <activity android:name=".GroupDiscussion">
+
+        </activity>
+        <activity android:name=".Notification">
+
+        </activity>
+        <service android:name=".ExampleService" />
+
     </application>
 
 </manifest>

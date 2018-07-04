@@ -7,14 +7,4 @@ public class Common {
     public static final String user_emp_tb1 = "EmpMaster";
     public static final int PICK_IMAGE_REQUEST = 9999 ;
     public static EmpMaster currentUser;
-
-    public static final String DELETE = "Delete";
-    public static final String USER_KEY = "eid";
-    public static final String PWD_KEY = "password";
-
-
-
-
-
-
 }
