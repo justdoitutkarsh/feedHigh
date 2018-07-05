@@ -180,7 +180,7 @@ public class HeadDepartmentReview extends AppCompatActivity {
                 for (DataSnapshot child : tableNote.getChildren()) {
                     String id = child.child("designation").getValue(String.class);
                     Toast.makeText(HeadDepartmentReview.this, id, Toast.LENGTH_SHORT).show();
-                    
+
                     HeadNote tmpNote = child.getValue(HeadNote.class);
                     mDataList.add(tmpNote);
                 }
