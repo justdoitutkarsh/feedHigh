@@ -43,6 +43,8 @@ import com.softup.utkarsh.feedhigh.Model.Department;
 import com.softup.utkarsh.feedhigh.ViewHolder.MenuViewHolder;
 import com.softup.utkarsh.feedhigh.activity.AddNoteActivity;
 import com.softup.utkarsh.feedhigh.activity.DepartmentReview;
+import com.softup.utkarsh.feedhigh.headactivity.HeadAddNoteActivity;
+import com.softup.utkarsh.feedhigh.headactivity.HeadDepartmentReview;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -163,12 +165,17 @@ public class Home extends AppCompatActivity
                         }
                         else if (clickitem.getName().toString().equals("Review your Head"))
                         {
-                            Intent intent = new Intent(Home.this, AddNoteActivity.class);
+                            Intent intent = new Intent(Home.this, HeadAddNoteActivity.class);
                             startActivity(intent);
                         }
                         else if (clickitem.getName().toString().equals("Common Department Reviews"))
                         {
                             Intent intent = new Intent(Home.this, DepartmentReview.class);
+                            startActivity(intent);
+                        }
+                        else if (clickitem.getName().toString().equals("My Reviews"))
+                        {
+                            Intent intent = new Intent(Home.this, HeadDepartmentReview.class);
                             startActivity(intent);
                         }
 

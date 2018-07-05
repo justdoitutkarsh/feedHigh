@@ -77,6 +77,40 @@
 
         </activity>
         <service android:name=".ExampleService" />
+        <activity
+            android:name=".headactivity.HeadAddNoteActivity"
+            android:label="@string/title_activity_add_note"
+            android:parentActivityName=".headactivity.HeadDepartmentReview"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.softup.utkarsh.feedhigh.headactivity.HeadDepartmentReview" />
+        </activity>
+        <activity android:name=".headactivity.HeadDepartmentReview">
+
+        </activity>
+        <activity
+            android:name=".headactivity.HeadLoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".headactivity.HeadDepartmentReview" />
+
+        <service android:name=".headservice.HeadFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".headservice.HeadFirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".headservice.HeadMessageSenderService"
+            android:exported="false" />
+
+        <activity android:name=".headactivity.HeadDetailsActivity" />
+
+
 
     </application>
 
