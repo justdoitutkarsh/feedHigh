@@ -6,9 +6,11 @@
         android:id="@+id/actionAdd"
         android:icon="@drawable/ic_action_add"
         android:orderInCategory="1"
+
         android:title="ADD"
-        android:visible="true"
-        app:showAsAction="always" />
+        android:visible="false"
+        app:showAsAction="always"
+        />
     <item
         android:id="@+id/actionSignOut"
         android:icon="@drawable/ic_exit_to_app_white_24dp"
