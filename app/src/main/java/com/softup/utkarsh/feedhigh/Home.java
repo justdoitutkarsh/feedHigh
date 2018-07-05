@@ -3,6 +3,7 @@ package com.softup.utkarsh.feedhigh;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -121,9 +122,20 @@ public class Home extends AppCompatActivity
         }
         txtDepartment.setText(Common.currentUser.getDepartment());
         txtDesignation.setText(Common.currentUser.getDesignation());
-        Toast.makeText(this, "Designation"+Common.currentUser.getDesignation().toString(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Department"+Common.currentUser.getDepartment().toString(), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "Designation"+Common.currentUser.getDesignation().toString(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Department"+Common.currentUser.getDepartment().toString(), Toast.LENGTH_SHORT).show();
 
+        // Create object of SharedPreferences.
+        SharedPreferences sharedPref = getSharedPreferences("Department", 0);
+
+        //now get Editor
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        //put your value
+        editor.putString("name", Common.currentUser.getDepartment());
+
+        //commits your edits
+        editor.commit();
 
 
 
@@ -152,28 +164,28 @@ public class Home extends AppCompatActivity
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
-                        if(clickitem.getName().toString().equals("Review Common Departments")) {
+                     //   Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
+                        if(clickitem.getName().toString().equals("Public Feedback to Departments")) {
                             Intent intent = new Intent(Home.this, AddNoteActivity.class);
                             startActivity(intent);
 
                         }
-                        else if (clickitem.getName().toString().equals("Chat Session Subscription"))
+                        else if (clickitem.getName().toString().equals("Company's Chat Session Subscription"))
                         {
                             Intent intent = new Intent(Home.this, GroupDiscussion.class);
                             startActivity(intent);
                         }
-                        else if (clickitem.getName().toString().equals("Review your Head"))
+                        else if (clickitem.getName().toString().equals("Feedback Your Senior"))
                         {
                             Intent intent = new Intent(Home.this, HeadAddNoteActivity.class);
                             startActivity(intent);
                         }
-                        else if (clickitem.getName().toString().equals("Common Department Reviews"))
+                        else if (clickitem.getName().toString().equals("Check Public Feedbacks"))
                         {
                             Intent intent = new Intent(Home.this, DepartmentReview.class);
                             startActivity(intent);
                         }
-                        else if (clickitem.getName().toString().equals("My Reviews"))
+                        else if (clickitem.getName().toString().equals("My Feedback"))
                         {
                             Intent intent = new Intent(Home.this, HeadDepartmentReview.class);
                             startActivity(intent);

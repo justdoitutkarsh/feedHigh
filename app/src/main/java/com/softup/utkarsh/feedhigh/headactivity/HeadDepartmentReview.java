@@ -4,9 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
@@ -29,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.softup.utkarsh.feedhigh.Common.Common;
+import com.softup.utkarsh.feedhigh.Home;
 import com.softup.utkarsh.feedhigh.R;
 import com.softup.utkarsh.feedhigh.headDepartmentReviewmodel.HeadNote;
 import com.softup.utkarsh.feedhigh.headadapter.HeadItemClickAdapter;
@@ -36,6 +40,7 @@ import com.softup.utkarsh.feedhigh.headadapter.HeadNoteAdapter;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HeadDepartmentReview extends AppCompatActivity {
 
@@ -137,8 +142,8 @@ public class HeadDepartmentReview extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(new HeadItemClickAdapter(this, new HeadItemClickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(HeadDepartmentReview.this, HeadDetailsActivity.class);
-                startActivity(intent);
+               // Intent intent = new Intent(HeadDepartmentReview.this, HeadDetailsActivity.class);
+               // startActivity(intent);
             }
         }));
 
@@ -178,35 +183,49 @@ public class HeadDepartmentReview extends AppCompatActivity {
                 DataSnapshot tableNote = dataSnapshot.child(NOTES);
 
                 for (DataSnapshot child : tableNote.getChildren()) {
-                    String id = child.child("designation").getValue(String.class);
-                    Toast.makeText(HeadDepartmentReview.this, id, Toast.LENGTH_SHORT).show();
+                    String id = child.child("body6").getValue(String.class);
+                    String id1 = child.child("body7").getValue(String.class);
+                    if (Common.currentUser.getDesignation().equals("Manager")) {
+                        if (id.equalsIgnoreCase("employee") && id1.equalsIgnoreCase(Common.currentUser.getDepartment())) {
 
-                    HeadNote tmpNote = child.getValue(HeadNote.class);
-                    mDataList.add(tmpNote);
+                            HeadNote tmpNote = child.getValue(HeadNote.class);
+                            mDataList.add(tmpNote);
+                          //  Toast.makeText(HeadDepartmentReview.this, id, Toast.LENGTH_SHORT).show();
+
+                            //  HeadNote tmpNote = child.getValue(HeadNote.class);
+                            //mDataList.add(tmpNote);
+
+                        }
+                    }
                 }
+
+
+
                 mRecyclerView.setAdapter(mHeadNoteAdapter);
                 mHeadNoteAdapter.notifyDataSetChanged();
                 showProgressBar(false);
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 showProgressBar(false);
             }
         });
+
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressed == 2) {
-            finishAffinity();
-            System.exit(0);
-        }
-        else {
-            doubleBackToExitPressed++;
-            Toast.makeText(this, "Please press Back again to exit", Toast.LENGTH_SHORT).show();
-        }
+
+            Intent intent = new Intent(HeadDepartmentReview.this, Home.class);
+            startActivity(intent);
+           // finishAffinity();
+            //System.exit(0);
+
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

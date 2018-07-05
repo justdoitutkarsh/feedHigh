@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class HeadNoteAdapter extends RecyclerView.Adapter<HeadNoteAdapter.CustomViewHolder> {
-
+    String test = "Emp";
     private List<HeadNote> dataList;
     private Context mContext;
 
@@ -24,11 +24,13 @@ public class HeadNoteAdapter extends RecyclerView.Adapter<HeadNoteAdapter.Custom
         this.dataList = data;
         this.mContext = context;
     }
+        @Override
+        public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-    @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.headcard_note, parent, false);
-        return new CustomViewHolder(view);
+                View view = LayoutInflater.from(mContext).inflate(R.layout.headcard_note, parent, false);
+
+                return new CustomViewHolder(view);
+
     }
 
     @Override
@@ -51,6 +53,7 @@ class CustomViewHolder extends RecyclerView.ViewHolder {
     private TextView body5;
     private TextView priority;
 
+
     CustomViewHolder(View itemView) {
         super(itemView);
         title = (TextView)itemView.findViewById(R.id.title);
@@ -63,16 +66,18 @@ class CustomViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bind(final HeadNote note) {
-        title.setText(note.getTitle());
-        body.setText(note.getBody());
-        body2.setText(note.getBody2());
-        body3.setText(note.getBody3());
-        body4.setText(note.getBody4());
-        body5.setText(note.getBody5());
-        int prior = note.getPriority();
-        GradientDrawable priorityCircle = (GradientDrawable) priority.getBackground();
-        priorityCircle.setColor(getPriorityColor(prior));
-        priority.setText(String.valueOf(prior));
+
+                title.setText(note.getTitle());
+                body.setText(note.getBody());
+                body2.setText(note.getBody2());
+                body3.setText(note.getBody3());
+                body4.setText(note.getBody4());
+                body5.setText(note.getBody5());
+                int prior = note.getPriority();
+                GradientDrawable priorityCircle = (GradientDrawable) priority.getBackground();
+                priorityCircle.setColor(getPriorityColor(prior));
+                priority.setText(String.valueOf(prior));
+
     }
 
     private int getPriorityColor(int priority) {

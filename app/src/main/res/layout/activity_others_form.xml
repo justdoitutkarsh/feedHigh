@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="186dp"
+        android:layout_marginTop="49dp"
         android:text="On Scale of 5, How much you want to rate ?"
         android:textColor="#ba68c8"
         android:textSize="25dp"
@@ -24,12 +24,25 @@
         android:id="@+id/smiley"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="188dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="228dp"
         app:placeHolderBackgroundColor="#80cbc4"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="183dp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="104dp"
+        android:background="@android:color/black"
+        android:text="Submit"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
 
 
 

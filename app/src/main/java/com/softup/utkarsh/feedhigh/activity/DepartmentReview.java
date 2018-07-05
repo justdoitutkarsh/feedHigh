@@ -182,6 +182,7 @@ public class DepartmentReview extends AppCompatActivity {
                     Note tmpNote = child.getValue(Note.class);
                     mDataList.add(tmpNote);
                 }
+
                 mRecyclerView.setAdapter(mNoteAdapter);
                 mNoteAdapter.notifyDataSetChanged();
                 showProgressBar(false);

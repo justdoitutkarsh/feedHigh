@@ -1,7 +1,10 @@
 package com.softup.utkarsh.feedhigh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.hsalf.smilerating.SmileRating;
@@ -10,11 +13,12 @@ public class OthersForm extends AppCompatActivity {
 
     SmileRating smileRating;
     int score=0;
+    Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_others_form);
-
+        btn=(Button)findViewById(R.id.btnSave);
         smileRating=(SmileRating)findViewById(R.id.smiley);
         smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
             @Override
@@ -57,8 +61,15 @@ public class OthersForm extends AppCompatActivity {
             }
         });
 
-*/
 
+*/
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OthersForm.this,Home.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

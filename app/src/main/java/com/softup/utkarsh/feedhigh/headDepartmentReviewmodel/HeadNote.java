@@ -9,6 +9,8 @@ public class HeadNote {
     private String body3;
     private String body4;
     private String body5;
+    private String body6;
+    private String body7;
     private int priority;
 
     public HeadNote() {
@@ -37,12 +39,18 @@ public class HeadNote {
     public String getBody5() {
         return body5;
     }
+    public String getBody6() {
+        return body6;
+    }
+    public String getBody7() {
+        return body7;
+    }
 
     public int getPriority() {
         return priority;
     }
 
-    public HeadNote(String firebaseKey, String title, String body, String body2, String body3, String body4, String body5, int priority) {
+    public HeadNote(String firebaseKey, String title, String body, String body2, String body3, String body4, String body5,String body6,String body7, int priority) {
         this.firebaseKey = firebaseKey;
         this.title = title;
         this.body = body;
@@ -50,6 +58,8 @@ public class HeadNote {
         this.body3 = body3;
         this.body4 = body4;
         this.body5 = body5;
+        this.body6=body6;
+        this.body7=body7;
         this.priority = priority;
     }
 }

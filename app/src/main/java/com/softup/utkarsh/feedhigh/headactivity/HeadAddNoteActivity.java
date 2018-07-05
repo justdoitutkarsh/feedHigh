@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Home;
+import com.softup.utkarsh.feedhigh.OthersForm;
 import com.softup.utkarsh.feedhigh.R;
 import com.softup.utkarsh.feedhigh.headDepartmentReviewmodel.HeadNote;
 import com.softup.utkarsh.feedhigh.headservice.HeadMessageSenderService;
@@ -59,7 +62,9 @@ public class HeadAddNoteActivity extends AppCompatActivity {
                 String body3 = intent.getExtras().getString("body3");
                 String body4 = intent.getExtras().getString("body4");
                 String body5 = intent.getExtras().getString("body5");
-                Toast.makeText(HeadAddNoteActivity.this, title+"\n"+body+"\n"+body2+"\n"+body3+"\n"+body4+"\n"+body5, Toast.LENGTH_LONG).show();
+                String body6 = intent.getExtras().getString("body6");
+                String body7 = intent.getExtras().getString("body7");
+                Toast.makeText(HeadAddNoteActivity.this, title+"\n"+body+"\n"+body2+"\n"+body3+"\n"+body4+"\n"+body5+"\n"+body6+"\n"+body7, Toast.LENGTH_LONG).show();
             }
         };
 
@@ -122,18 +127,20 @@ public class HeadAddNoteActivity extends AppCompatActivity {
 
                 setEditingEnabled(false);
                 saveBtn.setEnabled(false);
+                SharedPreferences sharedPref = getSharedPreferences("Department", 0);
+                String name = sharedPref.getString("name", "");
 
-                postNote(addTtl.getText().toString(), addBody.getText().toString(),addBody2.getText().toString(),addBody3.getText().toString(),addBody4.getText().toString(),addBody5.getText().toString(), mPriority);
+                postNote(addTtl.getText().toString(), addBody.getText().toString(),addBody2.getText().toString(),addBody3.getText().toString(),addBody4.getText().toString(),addBody5.getText().toString(), Common.currentUser.getDesignation().toString(),name, mPriority);
                 Toast.makeText(HeadAddNoteActivity.this,"Posting...", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void postNote(String title, String body, String body2, String body3, String body4, String body5, int priority) {
+    private void postNote(String title, String body, String body2, String body3, String body4, String body5,String body6,String body7, int priority) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         String key = mDatabase.child(NOTES).push().getKey();
 
-        HeadNote noteToSave = new HeadNote(key, title, body,body2,body3,body4,body5, priority);
+        HeadNote noteToSave = new HeadNote(key, title, body,body2,body3,body4,body5,body6,body7, priority);
         mDatabase.child(NOTES).child(key)
                 .setValue(noteToSave, new DatabaseReference.CompletionListener() {
             @Override
@@ -142,12 +149,12 @@ public class HeadAddNoteActivity extends AppCompatActivity {
                 saveBtn.setEnabled(true);
 
                 if (databaseError == null) {
-                    Toast.makeText(HeadAddNoteActivity.this, "Successfully posted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HeadAddNoteActivity.this, "Successfully Posted", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Intent.ACTION_SYNC, null, HeadAddNoteActivity.this, HeadMessageSenderService.class);
                     startService(intent);
-                    startActivity(new Intent(HeadAddNoteActivity.this, Home.class));
+                    startActivity(new Intent(HeadAddNoteActivity.this, OthersForm.class));
                 } else {
-                    Toast.makeText(HeadAddNoteActivity.this, "Review was not posted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HeadAddNoteActivity.this, "Error Posting Review", Toast.LENGTH_SHORT).show();
                 }
             }
         });
