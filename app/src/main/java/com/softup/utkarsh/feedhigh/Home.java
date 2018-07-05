@@ -41,6 +41,7 @@ import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Interface.ItemClickListener;
 import com.softup.utkarsh.feedhigh.Model.Department;
 import com.softup.utkarsh.feedhigh.ViewHolder.MenuViewHolder;
+import com.softup.utkarsh.feedhigh.activity.AddNoteActivity;
 import com.softup.utkarsh.feedhigh.activity.DepartmentReview;
 import com.squareup.picasso.Picasso;
 
@@ -150,14 +151,24 @@ public class Home extends AppCompatActivity
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
                         Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
-                        if(clickitem.getName().toString().equals("Department Review")) {
-                            Intent intent = new Intent(Home.this, DepartmentReview.class);
+                        if(clickitem.getName().toString().equals("Review Common Departments")) {
+                            Intent intent = new Intent(Home.this, AddNoteActivity.class);
                             startActivity(intent);
 
                         }
-                        else if (clickitem.getName().toString().equals("Start Discussion"))
+                        else if (clickitem.getName().toString().equals("Chat Session Subscription"))
                         {
                             Intent intent = new Intent(Home.this, GroupDiscussion.class);
+                            startActivity(intent);
+                        }
+                        else if (clickitem.getName().toString().equals("Review your Head"))
+                        {
+                            Intent intent = new Intent(Home.this, AddNoteActivity.class);
+                            startActivity(intent);
+                        }
+                        else if (clickitem.getName().toString().equals("Common Department Reviews"))
+                        {
+                            Intent intent = new Intent(Home.this, DepartmentReview.class);
                             startActivity(intent);
                         }
 

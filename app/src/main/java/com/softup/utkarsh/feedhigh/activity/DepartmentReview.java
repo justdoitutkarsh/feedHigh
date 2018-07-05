@@ -133,7 +133,7 @@ public class DepartmentReview extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mNoteAdapter);
-        swipeToDelete();
+       // swipeToDelete();
         mRecyclerView.addOnItemTouchListener(new ItemClickAdapter(this, new ItemClickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

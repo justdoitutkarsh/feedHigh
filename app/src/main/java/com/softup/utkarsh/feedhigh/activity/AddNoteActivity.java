@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.softup.utkarsh.feedhigh.DepartmentReviewmodel.Note;
+import com.softup.utkarsh.feedhigh.Home;
 import com.softup.utkarsh.feedhigh.R;
 import com.softup.utkarsh.feedhigh.service.MessageSenderService;
 
@@ -119,7 +120,7 @@ public class AddNoteActivity extends AppCompatActivity {
                     Toast.makeText(AddNoteActivity.this, "Successfully posted", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Intent.ACTION_SYNC, null, AddNoteActivity.this, MessageSenderService.class);
                     startService(intent);
-                    startActivity(new Intent(AddNoteActivity.this, DepartmentReview.class));
+                    startActivity(new Intent(AddNoteActivity.this, Home.class));
                 } else {
                     Toast.makeText(AddNoteActivity.this, "Note was not posted", Toast.LENGTH_SHORT).show();
                 }

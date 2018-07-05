@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
+
     tools:context="com.softup.utkarsh.feedhigh.activity.AddNoteActivity">
 
     <EditText
         android:hint="Department"
         android:id="@+id/addTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:layout_marginTop="10dp"
@@ -116,11 +118,21 @@
 
     </FrameLayout>
 
-    <Button
-        android:layout_marginTop="10dp"
+
+   <Button
         android:id="@+id/btnSave"
-        android:text="Save"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+       android:background="@android:color/black"
+       android:textColor="@android:color/white"
+       android:textStyle="bold"
+        android:text="Submit" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/highradius" />
 
 </LinearLayout>
