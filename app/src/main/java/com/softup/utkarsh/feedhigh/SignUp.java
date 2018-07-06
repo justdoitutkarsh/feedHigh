@@ -40,42 +40,46 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
-                mDialog.setMessage("Please waiting...");
-                mDialog.show();
+                if (edtEmpId.getText().toString().trim().equals("")||edtName.getText().toString().trim().equals("")||edtEmail.getText().toString().trim().equals("")
+                        ||edtDepartment.getText().toString().trim().equals("")||edtPassword.getText().toString().trim().equals("")||edtPhone.getText().toString().trim().equals("")
+                        ||edtDesignation.getText().toString().trim().equals("")){
+                    Toast.makeText(SignUp.this, "Enter all the fields to register!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
+                    mDialog.setMessage("Please waiting...");
+                    mDialog.show();
 
-                table_user.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //Check if already Emp Id
-                        if (dataSnapshot.child(edtEmpId.getText().toString()).exists())
-                        {
-                            mDialog.dismiss();
-                            Toast.makeText(SignUp.this, "You are already registered", Toast.LENGTH_SHORT).show();
+                    table_user.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            //Check if already Emp Id
+                            if (dataSnapshot.child(edtEmpId.getText().toString()).exists()) {
+                                mDialog.dismiss();
+                                Toast.makeText(SignUp.this, "You are already registered", Toast.LENGTH_SHORT).show();
+                            } else {
+                                mDialog.dismiss();
+                                EmpMaster empMaster = new EmpMaster(edtDepartment.getText().toString(), edtEmail.getText().toString(),
+                                        edtPhone.getText().toString(), edtName.getText().toString(), edtPassword.getText().toString(), edtDesignation.getText().toString());
+                                table_user.child(edtEmpId.getText().toString()).setValue(empMaster);
+
+                                //  Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("phoneParams", edtPhone.getText().toString());
+
+                                Intent intent = new Intent(SignUp.this, PhoneNoAuth.class);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                                finish();
+                            }
                         }
-                        else
-                        {
-                            mDialog.dismiss();
-                            EmpMaster empMaster = new EmpMaster(edtDepartment.getText().toString(),edtEmail.getText().toString(),
-                                    edtPhone.getText().toString(),edtName.getText().toString(),edtPassword.getText().toString(),edtDesignation.getText().toString());
-                            table_user.child(edtEmpId.getText().toString()).setValue(empMaster);
 
-                          //  Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();
-                            Bundle bundle = new Bundle();
-                            bundle.putString("phoneParams", edtPhone.getText().toString());
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                            Intent intent = new Intent(SignUp.this,PhoneNoAuth.class);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-                            finish();
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                    });
+                }
             }
         });
     }

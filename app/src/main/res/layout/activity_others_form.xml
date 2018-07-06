@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="19dp"
         android:background="@android:color/black"
         android:text="Submit"
         android:textColor="@android:color/white"

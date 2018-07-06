@@ -39,10 +39,16 @@ Button btnSignIn;
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (edtEmpId.getText().toString().trim().equals("") || edtPassword.getText().toString().trim().equals(""))
+                {
+                    Toast.makeText(SignIn.this, "Kindly enter username and password!", Toast.LENGTH_SHORT).show();
+                }
+                else{
                 final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Please waiting...");
                 mDialog.show();
-                table_user.addValueEventListener(new ValueEventListener() {
+                table_user.addValueEventListener(new ValueEventListener()
+                {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                             //Check if user not exist in database
@@ -79,7 +85,7 @@ Button btnSignIn;
 
                     }
                 });
-            }
+            }}
         });
     }
 }

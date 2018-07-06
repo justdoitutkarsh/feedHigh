@@ -120,7 +120,7 @@ public class DepartmentReview extends AppCompatActivity {
     }
 
     private void updateUI() {
-        isAuthorized();
+       // isAuthorized();
 
         rootView = getWindow().getDecorView().getRootView();
 

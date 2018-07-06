@@ -122,6 +122,9 @@
             android:layout_marginTop="10dp"
             android:id="@+id/btnSave"
             android:text="Submit Review"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
