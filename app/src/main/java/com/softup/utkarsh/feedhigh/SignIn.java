@@ -15,13 +15,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.rey.material.widget.CheckBox;
 import com.softup.utkarsh.feedhigh.Common.Common;
 import com.softup.utkarsh.feedhigh.Model.EmpMaster;
 import com.softup.utkarsh.feedhigh.Model.User;
 
+import io.paperdb.Paper;
+
 public class SignIn extends AppCompatActivity {
 EditText edtEmpId,edtPassword;
 Button btnSignIn;
+CheckBox ckbRemember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,9 @@ Button btnSignIn;
         edtPassword = (MaterialEditText)findViewById(R.id.edtPassword);
         edtEmpId = (MaterialEditText)findViewById(R.id.edtEmpId);
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
+
+        ckbRemember=(CheckBox)findViewById(R.id.ckbRemember);
+        Paper.init(this);
 
         //Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -61,7 +68,11 @@ Button btnSignIn;
                             if (empMaster.getPassword().equals(edtPassword.getText().toString())) {
                              //   Toast.makeText(SignIn.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
 
-
+                                if (ckbRemember.isChecked())
+                                {
+                                    Paper.book().write(Common.USER_KEY,edtEmpId.getText().toString());
+                                    Paper.book().write(Common.PWD_KEY,edtPassword.getText().toString());
+                                }
 
 
                                 Intent homeintent=new Intent(SignIn.this,Home.class);

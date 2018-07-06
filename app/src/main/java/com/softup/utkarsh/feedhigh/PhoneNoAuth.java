@@ -81,8 +81,8 @@ public class PhoneNoAuth extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
 
             // already signed in
-            Toast.makeText(this, "Already Verified User!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(PhoneNoAuth.this, Home.class));
+            Toast.makeText(this, "OTP Already Verified Before, Sign In now!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(PhoneNoAuth.this, SignIn.class));
 
             finish();
 
@@ -136,8 +136,8 @@ public class PhoneNoAuth extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-                Toast.makeText(this, "Verified !", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(PhoneNoAuth.this,Home.class));
+                Toast.makeText(this, "Verified , Sign in now!", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(PhoneNoAuth.this,SignIn.class));
                 finish();
                 return;
             }

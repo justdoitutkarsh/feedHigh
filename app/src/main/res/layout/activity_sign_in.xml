@@ -45,6 +45,17 @@
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true"
             />
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/ckbRemember"
+            style="@style/Material.Drawable.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Remember me"
+            android:textColor="@android:color/white"
+            app:cbd_strokeColor="@android:color/white"
+            app:cbd_tickColor="@color/colorPrimaryDark"/>
+
 
     </LinearLayout>
 
@@ -53,9 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="98dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="53dp"
         android:text="Sign In"
         android:textColor="@android:color/white"
         app:cornerRadius="4dp"

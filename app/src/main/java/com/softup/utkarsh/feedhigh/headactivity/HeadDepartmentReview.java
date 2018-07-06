@@ -185,8 +185,8 @@ public class HeadDepartmentReview extends AppCompatActivity {
                 for (DataSnapshot child : tableNote.getChildren()) {
                     String id = child.child("body6").getValue(String.class);
                     String id1 = child.child("body7").getValue(String.class);
-                    if (Common.currentUser.getDesignation().equals("Manager")) {
-                        if (id.equalsIgnoreCase("employee") && id1.equalsIgnoreCase(Common.currentUser.getDepartment())) {
+                   // if (Common.currentUser.getDesignation().equals("Manager")) {
+                     //   if (id.equalsIgnoreCase("employee") && id1.equalsIgnoreCase(Common.currentUser.getDepartment())) {
 
                             HeadNote tmpNote = child.getValue(HeadNote.class);
                             mDataList.add(tmpNote);
@@ -196,8 +196,8 @@ public class HeadDepartmentReview extends AppCompatActivity {
                             //mDataList.add(tmpNote);
 
                         }
-                    }
-                }
+                //    }
+               // }
 
 
 
