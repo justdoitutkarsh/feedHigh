@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -37,16 +36,16 @@ import com.softup.utkarsh.feedhigh.utils.SCUtils;
 
 import java.util.ArrayList;
 
-public class GroupDiscussion extends AppCompatActivity {
+public class DepartmentGroupDiscussion extends AppCompatActivity {
 
   public static final int ANTI_FLOOD_SECONDS = 3; //simple anti-flood
   private boolean IS_ADMIN = false; //set this to true for the admin app.
-  private String username = "anonymous"; //default username
+  private String username = Common.currentUser.getName().toString(); //default username
   private boolean PROFANITY_FILTER_ACTIVE = true;
   private FirebaseDatabase database;
   private RecyclerView main_recycler_view;
   private String userID;
-  private GroupDiscussion mContext;
+  private DepartmentGroupDiscussion mContext;
   private MainAdapter adapter;
   private DatabaseReference databaseRef;
   private ImageButton imageButton_send;
@@ -56,6 +55,7 @@ public class GroupDiscussion extends AppCompatActivity {
   private ProgressBar progressBar;
   private long last_message_timestamp = 0;
   static int clickcount=0;
+  String department = Common.currentUser.getDepartment();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class GroupDiscussion extends AppCompatActivity {
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    mContext = GroupDiscussion.this;
+    mContext = DepartmentGroupDiscussion.this;
     main_recycler_view = (RecyclerView) findViewById(R.id.main_recycler_view);
     imageButton_send = (ImageButton) findViewById(R.id.imageButton_send);
 
@@ -110,7 +110,7 @@ public class GroupDiscussion extends AppCompatActivity {
 
         String department= Common.currentUser.getDepartment();
 
-        databaseRef.child("the_messages").limitToLast(50).addChildEventListener(new ChildEventListener() {
+        databaseRef.child(department.toString()).limitToLast(50).addChildEventListener(new ChildEventListener() {
           @Override
           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
             progressBar.setVisibility(View.GONE);
@@ -118,9 +118,9 @@ public class GroupDiscussion extends AppCompatActivity {
             if (clickcount%2==1) {
 
               String input = new_message.getMessage().toString();
-              Intent serviceIntent = new Intent(GroupDiscussion.this, ExampleService.class);
+              Intent serviceIntent = new Intent(DepartmentGroupDiscussion.this, ExampleService.class);
               serviceIntent.putExtra("inputExtra", input);
-              ContextCompat.startForegroundService(GroupDiscussion.this, serviceIntent);
+              ContextCompat.startForegroundService(DepartmentGroupDiscussion.this, serviceIntent);
             }
             messageArrayList.add(new_message);
             adapter.notifyDataSetChanged();
@@ -195,8 +195,8 @@ public class GroupDiscussion extends AppCompatActivity {
     editText_message.setText("");
 
     Message xmessage = new Message(userID, username, new_message, System.currentTimeMillis() / 1000L, IS_ADMIN, isNotification);
-    String key = databaseRef.child("the_messages").push().getKey();
-    databaseRef.child("the_messages").child(key).setValue(xmessage);
+    String key = databaseRef.child(department.toString()).push().getKey();
+    databaseRef.child(department.toString()).child(key).setValue(xmessage);
 
     last_message_timestamp = System.currentTimeMillis() / 1000L;
   }

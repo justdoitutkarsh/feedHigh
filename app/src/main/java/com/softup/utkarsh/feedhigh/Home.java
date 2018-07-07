@@ -192,6 +192,12 @@ public class Home extends AppCompatActivity
                             Intent intent = new Intent(Home.this, HeadDepartmentReview.class);
                             startActivity(intent);
                         }
+                        else if (clickitem.getName().toString().equals("Department Chat"))
+                        {
+                            Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Home.this, DepartmentGroupDiscussion.class);
+                            startActivity(intent);
+                        }
 
 
                     }
