@@ -36,7 +36,7 @@ import com.softup.utkarsh.feedhigh.utils.SCUtils;
 
 import java.util.ArrayList;
 
-public class DepartmentGroupDiscussion extends AppCompatActivity {
+public class WomenGroupDiscussion extends AppCompatActivity {
 
   public static final int ANTI_FLOOD_SECONDS = 3; //simple anti-flood
   private boolean IS_ADMIN = false; //set this to true for the admin app.
@@ -45,7 +45,7 @@ public class DepartmentGroupDiscussion extends AppCompatActivity {
   private FirebaseDatabase database;
   private RecyclerView main_recycler_view;
   private String userID;
-  private DepartmentGroupDiscussion mContext;
+  private WomenGroupDiscussion mContext;
   private MainAdapter adapter;
   private DatabaseReference databaseRef;
   private ImageButton imageButton_send;
@@ -55,7 +55,7 @@ public class DepartmentGroupDiscussion extends AppCompatActivity {
   private ProgressBar progressBar;
   private long last_message_timestamp = 0;
   static int clickcount=0;
-  String department = Common.currentUser.getDepartment();
+  String department = "Women Chat";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class DepartmentGroupDiscussion extends AppCompatActivity {
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    mContext = DepartmentGroupDiscussion.this;
+    mContext = WomenGroupDiscussion.this;
     main_recycler_view = (RecyclerView) findViewById(R.id.main_recycler_view);
     imageButton_send = (ImageButton) findViewById(R.id.imageButton_send);
 
@@ -108,7 +108,7 @@ public class DepartmentGroupDiscussion extends AppCompatActivity {
 
     });
 
-        String department= Common.currentUser.getDepartment();
+       // String department= Common.currentUser.getDepartment();
 
         databaseRef.child(department.toString()).limitToLast(50).addChildEventListener(new ChildEventListener() {
           @Override
@@ -118,9 +118,9 @@ public class DepartmentGroupDiscussion extends AppCompatActivity {
             if (clickcount%2==1) {
 
               String input = new_message.getMessage().toString();
-              Intent serviceIntent = new Intent(DepartmentGroupDiscussion.this, ExampleService.class);
+              Intent serviceIntent = new Intent(WomenGroupDiscussion.this, ExampleService.class);
               serviceIntent.putExtra("inputExtra", input);
-              ContextCompat.startForegroundService(DepartmentGroupDiscussion.this, serviceIntent);
+              ContextCompat.startForegroundService(WomenGroupDiscussion.this, serviceIntent);
             }
             messageArrayList.add(new_message);
             adapter.notifyDataSetChanged();

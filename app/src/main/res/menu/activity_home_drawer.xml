@@ -43,7 +43,7 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Chat Session"
+                android:title="Women Chat Group"
                 android:visible="false"/>
             <item
                 android:id="@+id/nav_signout"

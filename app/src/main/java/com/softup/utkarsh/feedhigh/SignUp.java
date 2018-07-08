@@ -17,7 +17,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.softup.utkarsh.feedhigh.Model.EmpMaster;
 
 public class SignUp extends AppCompatActivity {
-    MaterialEditText edtEmpId,edtName,edtEmail,edtDepartment,edtPassword,edtPhone,edtDesignation;
+    MaterialEditText edtEmpId,edtName,edtEmail,edtDepartment,edtPassword,edtPhone,edtDesignation,edtGender;
     Button btnSignUp;
 
     @Override
@@ -32,6 +32,7 @@ public class SignUp extends AppCompatActivity {
         edtPhone = (MaterialEditText)findViewById(R.id.edtPhone);
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
         edtDesignation = (MaterialEditText)findViewById(R.id.edtDesignation);
+        edtGender=(MaterialEditText)findViewById(R.id.edtGender);
 
         //Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -42,12 +43,17 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 if (edtEmpId.getText().toString().trim().equals("")||edtName.getText().toString().trim().equals("")||edtEmail.getText().toString().trim().equals("")
                         ||edtDepartment.getText().toString().trim().equals("")||edtPassword.getText().toString().trim().equals("")||edtPhone.getText().toString().trim().equals("")
-                        ||edtDesignation.getText().toString().trim().equals("")){
+                        ||edtDesignation.getText().toString().trim().equals("")||edtGender.getText().toString().trim().equals("")){
                     Toast.makeText(SignUp.this, "Enter all the fields to register!", Toast.LENGTH_SHORT).show();
                 }
+                else if (edtPhone.getText().toString().length() != 10)
+                {
+                    Toast.makeText(SignUp.this, "Enter a valid number!", Toast.LENGTH_SHORT).show();
+                }
+
                 else {
                     final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
-                    mDialog.setMessage("Please waiting...");
+                    mDialog.setMessage("Please wait...");
                     mDialog.show();
 
                     table_user.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -60,7 +66,7 @@ public class SignUp extends AppCompatActivity {
                             } else {
                                 mDialog.dismiss();
                                 EmpMaster empMaster = new EmpMaster(edtDepartment.getText().toString(), edtEmail.getText().toString(),
-                                        edtPhone.getText().toString(), edtName.getText().toString(), edtPassword.getText().toString(), edtDesignation.getText().toString());
+                                        edtPhone.getText().toString(), edtName.getText().toString(), edtPassword.getText().toString(), edtDesignation.getText().toString(),edtGender.getText().toString());
                                 table_user.child(edtEmpId.getText().toString()).setValue(empMaster);
 
                                 //  Toast.makeText(SignUp.this, "Sign up successfully !", Toast.LENGTH_SHORT).show();

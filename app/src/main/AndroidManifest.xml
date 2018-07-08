@@ -74,6 +74,7 @@
 
         </activity>
         <activity android:name=".DepartmentGroupDiscussion"></activity>
+        <activity android:name=".WomenGroupDiscussion"></activity>
         <activity android:name=".Notification">
 
         </activity>

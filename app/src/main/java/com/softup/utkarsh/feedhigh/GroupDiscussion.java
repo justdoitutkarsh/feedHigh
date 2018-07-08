@@ -121,11 +121,11 @@ public class GroupDiscussion extends AppCompatActivity {
               Intent serviceIntent = new Intent(GroupDiscussion.this, ExampleService.class);
               serviceIntent.putExtra("inputExtra", input);
               ContextCompat.startForegroundService(GroupDiscussion.this, serviceIntent);
-            }
+
             messageArrayList.add(new_message);
             adapter.notifyDataSetChanged();
             main_recycler_view.scrollToPosition(adapter.getItemCount() - 1);
-          }
+          }}
 
 
           @Override

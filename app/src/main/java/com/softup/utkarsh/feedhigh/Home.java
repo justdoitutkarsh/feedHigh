@@ -194,10 +194,25 @@ public class Home extends AppCompatActivity
                         }
                         else if (clickitem.getName().toString().equals("Department Chat"))
                         {
-                            Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
+                           // Toast.makeText(Home.this,""+clickitem.getName(),Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(Home.this, DepartmentGroupDiscussion.class);
                             startActivity(intent);
                         }
+                        if (clickitem.getName().toString().equals(Common.currentUser.getGender()))
+
+                        {
+                               // Toast.makeText(Home.this, "" + clickitem.getName(), Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(Home.this, WomenGroupDiscussion.class);
+                                startActivity(intent);
+
+
+
+                        }
+                        else
+                        {
+                            Toast.makeText(Home.this, "Only Female Members Allowed !", Toast.LENGTH_SHORT).show();
+                        }
+
 
 
                     }
@@ -275,6 +290,7 @@ public class Home extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
+
 
         } else if (id == R.id.nav_signout) {
 

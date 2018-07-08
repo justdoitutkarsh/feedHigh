@@ -8,17 +8,19 @@ public class EmpMaster extends User {
     private String Password;
     private String AvatarUrl;
     private String Designation;
+    private String Gender;
 
     public EmpMaster() {
     }
 
-    public EmpMaster(String department, String email, String mobile, String name, String password,String designation) {
+    public EmpMaster(String department, String email, String mobile, String name, String password,String designation,String gender) {
         Department = department;
         Email = email;
         Mobile = mobile;
         Name = name;
         Password = password;
         Designation = designation;
+        Gender=gender;
     }
 
     public String getAvatarUrl() {
@@ -74,5 +76,12 @@ public class EmpMaster extends User {
 
     public void setDesignation(String designation) {
         Designation = designation;
+    }
+    public String getGender() {
+        return Gender;
+    }
+
+    public void setGender(String gender) {
+        Gender = gender;
     }
 }

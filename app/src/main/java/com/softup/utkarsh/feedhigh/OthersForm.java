@@ -14,6 +14,7 @@ public class OthersForm extends AppCompatActivity {
     SmileRating smileRating;
     int score=0;
     Button btn;
+    String rate="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,23 +28,28 @@ public class OthersForm extends AppCompatActivity {
                 switch (smiley)
                 {
                     case SmileRating.BAD:
-                        Toast.makeText(OthersForm.this,"BAD", Toast.LENGTH_SHORT).show();
+                        rate="Bad";
+                     //   Toast.makeText(OthersForm.this,"BAD", Toast.LENGTH_SHORT).show();
                         score=2;
                         break;
                     case SmileRating.GOOD:
-                        Toast.makeText(OthersForm.this,"GOOD", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(OthersForm.this,"GOOD", Toast.LENGTH_SHORT).show();
+                        rate="Good";
                         score=4;
                         break;
                     case SmileRating.GREAT:
-                        Toast.makeText(OthersForm.this,"GREAT", Toast.LENGTH_SHORT).show();
+                        rate="Great";
+                        //Toast.makeText(OthersForm.this,"GREAT", Toast.LENGTH_SHORT).show();
                         score=5;
                         break;
                     case SmileRating.OKAY:
-                        Toast.makeText(OthersForm.this,"OKAY", Toast.LENGTH_SHORT).show();
+                        rate="Okay";
+                        //Toast.makeText(OthersForm.this,"OKAY", Toast.LENGTH_SHORT).show();
                         score=3;
                         break;
                     case SmileRating.TERRIBLE:
-                        Toast.makeText(OthersForm.this,"TERRIBLE", Toast.LENGTH_SHORT).show();
+                        rate="Terrible";
+                        //Toast.makeText(OthersForm.this,"TERRIBLE", Toast.LENGTH_SHORT).show();
                         score=1;
                         break;
 
@@ -66,6 +72,7 @@ public class OthersForm extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(OthersForm.this, "Feedback Submitted , You reviewed the employee "+rate.toUpperCase().toString(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(OthersForm.this,Home.class);
                 startActivity(intent);
             }

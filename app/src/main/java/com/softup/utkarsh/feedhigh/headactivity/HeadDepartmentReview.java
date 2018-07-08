@@ -185,8 +185,9 @@ public class HeadDepartmentReview extends AppCompatActivity {
                 for (DataSnapshot child : tableNote.getChildren()) {
                     String id = child.child("body6").getValue(String.class);
                     String id1 = child.child("body7").getValue(String.class);
-                   // if (Common.currentUser.getDesignation().equals("Manager")) {
-                     //   if (id.equalsIgnoreCase("employee") && id1.equalsIgnoreCase(Common.currentUser.getDepartment())) {
+
+                    if (Common.currentUser.getDesignation().equalsIgnoreCase("Assistant Manager")) {
+                        if (id.equalsIgnoreCase("employee" ) && id1.equalsIgnoreCase(Common.currentUser.getDepartment())) {
 
                             HeadNote tmpNote = child.getValue(HeadNote.class);
                             mDataList.add(tmpNote);
@@ -196,8 +197,63 @@ public class HeadDepartmentReview extends AppCompatActivity {
                             //mDataList.add(tmpNote);
 
                         }
-                //    }
-               // }
+                    }
+                    else if(Common.currentUser.getDesignation().equalsIgnoreCase("Manager"))
+                    {
+                        if (id.equalsIgnoreCase("Assistant Manager") && id1.equalsIgnoreCase(Common.currentUser.getDepartment())
+                                ) {
+
+                            HeadNote tmpNote = child.getValue(HeadNote.class);
+                            mDataList.add(tmpNote);
+
+                        }
+                    }
+
+                    else if(Common.currentUser.getDesignation().equalsIgnoreCase("Department head"))
+                    {
+                        if (id.equalsIgnoreCase("Manager") && id1.equalsIgnoreCase(Common.currentUser.getDepartment())
+                                ) {
+
+                            HeadNote tmpNote = child.getValue(HeadNote.class);
+                            mDataList.add(tmpNote);
+
+                        }
+                    }
+                    else if(Common.currentUser.getDesignation().equalsIgnoreCase("Unit Head"))
+                    {
+                        if (id.equalsIgnoreCase("Department Head")) {
+
+                            HeadNote tmpNote = child.getValue(HeadNote.class);
+                            mDataList.add(tmpNote);
+
+                        }
+                    }
+
+                    else if(Common.currentUser.getDesignation().equalsIgnoreCase("Vice Chairman"))
+                    {
+                        if (id.equalsIgnoreCase("Unit Head")
+                                ) {
+
+                            HeadNote tmpNote = child.getValue(HeadNote.class);
+                            mDataList.add(tmpNote);
+
+                        }
+                    }
+
+                    else if(Common.currentUser.getDesignation().equalsIgnoreCase("Chairman"))
+                    {
+                        if (id.equalsIgnoreCase("Vice Chairman")
+                                ) {
+
+                            HeadNote tmpNote = child.getValue(HeadNote.class);
+                            mDataList.add(tmpNote);
+
+                        }
+                    }
+
+
+
+                }
 
 
 

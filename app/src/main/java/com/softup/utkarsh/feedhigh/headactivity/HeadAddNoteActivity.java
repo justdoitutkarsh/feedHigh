@@ -131,7 +131,7 @@ public class HeadAddNoteActivity extends AppCompatActivity {
                 String name = sharedPref.getString("name", "");
 
                 postNote(addTtl.getText().toString(), addBody.getText().toString(),addBody2.getText().toString(),addBody3.getText().toString(),addBody4.getText().toString(),addBody5.getText().toString(), Common.currentUser.getDesignation().toString(),name, mPriority);
-                Toast.makeText(HeadAddNoteActivity.this,"Posting...", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(HeadAddNoteActivity.this,"Posting...", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -149,7 +149,7 @@ public class HeadAddNoteActivity extends AppCompatActivity {
                 saveBtn.setEnabled(true);
 
                 if (databaseError == null) {
-                    Toast.makeText(HeadAddNoteActivity.this, "Successfully Posted", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(HeadAddNoteActivity.this, "Successfully Posted", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Intent.ACTION_SYNC, null, HeadAddNoteActivity.this, HeadMessageSenderService.class);
                     startService(intent);
                     startActivity(new Intent(HeadAddNoteActivity.this, OthersForm.class));
